@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns="http://www.springframework.org/schema/beans"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+	<bean id="envProperties" class="org.springframework.beans.factory.config.PropertiesFactoryBean">
+	  <property name="locations">
+	    <list>
+	      <value>classpath*:/com/gr/cinema/config/${test.env}-config.properties</value>
+	    </list>
+	  </property>
+	</bean>
+    <bean id="jdbcDatasource" class="com.gr.cinema.common.JDBCDatasource"/>
+    <bean id="session" class="com.gr.cinema.common.CurrentSession"/>
+    <context:annotation-config/>
+    <context:component-scan base-package="service,com.gr.cinema.common"/>
+
+</beans>
